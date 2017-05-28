@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="room_number">
+        <item>20701</item>
+        <item>20702</item>
+        <item>20703</item>
+        <item>20704</item>
+        <item>20705</item>
+        <item>20707</item>
+        <item>20709</item>
+        <item>20711</item>
+        <item>20714</item>
+        <item>20715</item>
+        <item>20716</item>
+        <item>20717</item>
+        <item>20801</item>
+        <item>20802</item>
+        <item>20803</item>
+        <item>20804</item>
+        <item>20805</item>
+        <item>20806</item>
+        <item>20807</item>
+        <item>20808</item>
+        <item>20809</item>
+        <item>20810</item>
+        <item>20811</item>
+        <item>20812</item>
+        <item>20814</item>
+        <item>20815</item>
+        <item>20816</item>
+        <item>20817</item>
+    </string-array>
+
+    <string-array name="itemsRequested">
+        <item>Dental Kits</item>
+        <item>Sewing Kits</item>
+        <item>Shaving Kits</item>
+        <item>Tide</item>
+        <item>Cascad</item>
+        <item>Door Stoppers</item>
+        <item>Ear Plugs</item>
+        <item>Ashtrays</item>
+        <item>Vanity mirror</item>
+        <item>Slippers</item>
+        <item>Palmolive</item>
+        <item>Dish Soap</item>
+        <item>Sponge (Dish soap)</item>
+        <item>Lint Rollers</item>
+        <item>Irons</item>
+        <item>Iron Boards</item>
+        <item>Baby kits</item>
+        <item>Coffee Regular (Starbucks)</item>
+        <item>Coffee Decaf (Starbucks)</item>
+        <item>Coffee Regular (K-cup)</item>
+        <item>Coffee Decaf (K-cup)</item>
+        <item>Creamer</item>
+        <item>Splenda</item>
+        <item>Sugar</item>
+        <item>Tazo awake tea</item>
+        <item>Tazo calm tea</item>
+        <item>Laundry bags</item>
+        <item>Laundry ticket</item>
+        <item>Hair wash</item>
+
+
+
+
+    </string-array>
+</resources>
