@@ -1,10 +1,11 @@
 <resources>
-    <string name="app_name">HOTSOS_Ext</string>
+    <string name="app_name">Log</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="runner_log">Runner Log</string>
 
     <string-array name="myItem">
 

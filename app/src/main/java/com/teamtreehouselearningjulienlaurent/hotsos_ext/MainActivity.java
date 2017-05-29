@@ -14,10 +14,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
     implements PendingOrders.OnFragmentInteractionListener,
-    CompletedOrders.OnCompletedOrdersFragmentInteractionListener, View.OnClickListener{
+    CompletedOrders.OnCompletedOrdersFragmentInteractionListener, RoomDialog.onRoomDialogInteractionListener, View.OnClickListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private FloatingActionButton addButton;
+    private TextView toolbarTitle;
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         // Set up the ViewPager with the sections adapter.
@@ -50,7 +53,6 @@ public class MainActivity extends AppCompatActivity
 
         addButton = (FloatingActionButton) findViewById(R.id.floatingActionButtonAdd);
         addButton.setOnClickListener(this);
-
     }
 
 
@@ -73,7 +75,6 @@ public class MainActivity extends AppCompatActivity
 
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -96,6 +97,12 @@ public class MainActivity extends AppCompatActivity
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onRoomDialogInteraction(String room) {
+        toolbarTitle.setText(room);
+        Toast.makeText(this, "This is inside the main " + room, Toast.LENGTH_SHORT).show();
     }
 
     /**
