@@ -16,9 +16,13 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.teamtreehouselearningjulienlaurent.hotsos_ext.DialogFragments.AddItemsDialogFragment;
+import com.teamtreehouselearningjulienlaurent.hotsos_ext.DialogFragments.RoomDialog;
+
 public class MainActivity extends AppCompatActivity
     implements PendingOrders.OnFragmentInteractionListener,
-    CompletedOrders.OnCompletedOrdersFragmentInteractionListener, RoomDialog.onRoomDialogInteractionListener, View.OnClickListener {
+    CompletedOrders.OnCompletedOrdersFragmentInteractionListener,
+    RoomDialog.onRoomDialogInteractionListener, AddItemsDialogFragment.onAddItemsInteractionListener, View.OnClickListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -103,7 +107,17 @@ public class MainActivity extends AppCompatActivity
     public void onRoomDialogInteraction(String room) {
         toolbarTitle.setText(room);
         Toast.makeText(this, "This is inside the main " + room, Toast.LENGTH_SHORT).show();
+        AddItemsDialogFragment addItemsDialogFragment = new AddItemsDialogFragment();
+        addItemsDialogFragment.setRoomNumber(room);
+        addItemsDialogFragment.show(getSupportFragmentManager(), "addItems");
+
     }
+
+    @Override
+    public void onAddItemsInteraction(OrderToComplete order) {
+
+    }
+
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to

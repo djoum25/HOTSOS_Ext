@@ -1,0 +1,157 @@
+//        mDatabaseReference.child("rooms").child("tresor").setValue(RoomsUtility.setRoomNumberInTresor());
+//        mDatabaseReference.child("rooms").child("sorento").setValue(RoomsUtility.setRoomNumberInSorento());
+//        mDatabaseReference.child("rooms").child("chateau").setValue(RoomsUtility.setRoomNumberInChateau());
+//        mDatabaseReference.child("rooms").child("versailles").setValue(RoomsUtility.setRoomNumberInVersailles());
+ //========================================================================
+
+ /*
+        this is the place to set the room number array for wherever
+        they are from
+         */
+    public static ArrayList<String> setRoomNumberInTresor() {
+        ArrayList <String> rooms = new ArrayList<>();
+        for (int i = 0; i <= 3702; i++) {
+            if ((i >= 701 && i <= 717 && i != 706 && i != 708 && i != 710 && i != 712 && i != 713) ||
+                (i >= 801 && i <= 817 && i != 813) || (i >= 901 && i <= 917 && i != 913) ||
+                (i >= 1001 && i <= 1017 && i != 1013) ||
+                (i >= 1101 && i <= 1117 && i != 1113) || (i >= 1201 && i <= 1217 && i != 1213) ||
+                (i >= 1401 && i <= 1417 && i != 1413) || (i >= 1501 && i <= 1517 && i != 1513) ||
+                (i >= 1601 && i <= 1617 && i != 1613) || (i >= 1701 && i <= 1717 && i != 1713) ||
+                (i >= 1801 && i <= 1817 && i != 1813) || (i >= 1901 && i <= 1917 && i != 1913) ||
+                (i >= 2001 && i <= 2017 && i != 2013) || (i >= 2101 && i <= 2117 && i != 2113) ||
+                (i >= 2201 && i <= 2217 && i != 2213) || (i >= 2301 && i <= 2317 && i != 2313) ||
+                (i >= 2401 && i <= 2417 && i != 2413) || (i >= 2501 && i <= 2517 && i != 2513) ||
+                (i >= 2601 && i <= 2617 && i != 2613) || (i >= 2701 && i <= 2717 && i != 2713) ||
+                (i >= 2801 && i <= 2817 && i != 2813) || (i >= 2901 && i <= 2917 && i != 2913) ||
+                (i >= 3001 && i <= 3017 && i != 2313) || (i >= 3101 && i <= 3117 && i != 3113) ||
+                (i >= 3201 && i <= 3217 && i != 3213) || (i >= 3301 && i <= 3317 && i != 3313) ||
+                (i >= 3401 && i <= 3417 && i != 3413) || (i >= 3501 && i <= 3517 && i != 3513) ||
+                (i >= 3601 && i <= 3617 && i != 3613) || (i >= 3701 && i <= 3702)) {
+                rooms.add(String.valueOf(i));
+            }
+        }
+        return rooms;
+    }
+
+    public static ArrayList<String> setRoomNumberInSorento() {
+        ArrayList <String> rooms = new ArrayList<>();
+        for (int i = 0; i <= 1920; i++) {
+            if ((i >= 301 && i <= 323) ||
+                (i >= 401 && i <= 423) ||
+                (i >= 501 && i <= 523) ||
+                (i >= 601 && i <= 623) ||
+                (i >= 701 && i <= 723) ||
+                (i >= 801 && i <= 819) ||
+                (i >= 901 && i <= 919) ||
+                (i >= 1001 && i <= 1019)||
+                (i >= 1101 && i <= 1119)||
+                (i >= 1201 && i <= 1219) ||
+                (i >= 1401 && i <= 1419) ||
+                (i >= 1501 && i <= 1519 ) ||
+                (i >= 1601 && i <= 1619) ||
+                (i >= 1701 && i <= 1719) ||
+                (i >= 1801 && i <= 1819) ||
+                (i >= 1901 && i <= 1919)) {
+                rooms.add(String.valueOf(i));
+            }
+        }
+        return rooms;
+    }
+
+    public static ArrayList<String> setRoomNumberInChateau() {
+        ArrayList<String> rooms = new ArrayList<>();
+        for (int i = 0; i <= 1963 ;i++){
+            if ((i>= 400 && i<= 460)||
+                (i>=500 && i<560) ||
+                (i>=600 && i<= 660)||
+                (i>=700 && i<= 760)||
+                (i>=800 && i<=860)||
+                (i>=900 && i<= 960)||
+                (i>= 1000 && i<= 1060)||
+                (i>=1100 && i<=1160)||
+                (i>=1200 && i<= 1260)||
+                (i>=1400 && i<= 1460)||
+                (i>=1500 && i<=1560)||
+                (i>=1600 && i<= 1660)||
+                (i>=1700 && i<= 1760)||
+                (i>=1800 && i<=1860)||
+                (i>=1900 && i<=1960)){
+                rooms.add(String.valueOf(i));
+            }
+        }
+        return rooms;
+    }
+
+    public static ArrayList<String> setRoomNumberInVersailles() {
+        ArrayList<String> rooms = new ArrayList<>();
+        for (int i = 0; i < 1963 ;i++){
+            if (
+                (i>=561 && i<=590) ||
+                (i>=661 && i<= 690)||
+                (i>=761 && i<= 790)||
+                (i>=861 && i<890)||
+                (i>=961 && i<= 990)||
+                (i>= 1061 && i<= 1090)||
+                (i>=1161 && i<=1190)||
+                (i>=1261 && i<= 1290)||
+                (i>=1461 && i<= 1490)||
+                (i>=1561 && i<=1590)||
+                (i>=1661 && i<= 1690)||
+                (i>=1761 && i<= 1790)){
+                rooms.add(String.valueOf(i));
+            }
+
+        }
+        return rooms;
+    }
+
+    =============================================list of items============================
+    items.add("Dental kits");
+                items.add("Sewing kits");
+                items.add("Shaving kits");
+                items.add("Tide");
+                items.add("Cascade");
+                items.add("Door stopper");
+                items.add("Ear plug");
+                items.add("Ashtrays");
+                items.add("Vanity mirror");
+            for (int i = 1; i<10; i++){
+                items.add(String.valueOf(i));
+            }
+                items.add("Slippers");
+                items.add("Palmolive");
+                items.add("Dish Soap");
+                items.add("Ice lines");
+                items.add("Lint Rollers");
+                items.add("Johnson kits");
+                items.add("Irons");
+                items.add("Iron Board");
+                items.add("Starbucks Coffee (regular");
+                items.add("Starbucks Coffee (decaf)");
+                items.add("Kcup Coffee (regular");
+                items.add("Kcup Coffee (decaf)");
+                items.add("Creamer");
+                items.add("Splenda");
+                items.add("Sugar");
+                items.add("Tazo awake tea");
+                items.add("Tazo calm tea");
+                items.add("Liquid creamer");
+                items.add("Hair dryer");
+                items.add("Laundry bags");
+                items.add("Laundry bags / ticket");
+                items.add("Aminities");
+                items.add("Slepy sign");
+                items.add("Shampoo");
+                items.add("Hair Wash");
+                items.add("Conditionner");
+                items.add("Body lotion");
+                items.add("Body wash");
+                items.add("Duvert");
+                items.add("Pillows");
+                items.add("Sheet");
+                items.add("Blankets");
+                items.add("Rollaway bed");
+                items.add("Crib");
+                items.add("Crib sheet");
+
+                 mDatabaseReference.child(getString(R.string.listOfAvaillableItems)).setValue(items);

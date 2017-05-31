@@ -1,37 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="room_number">
-        <item>20701</item>
-        <item>20702</item>
-        <item>20703</item>
-        <item>20704</item>
-        <item>20705</item>
-        <item>20707</item>
-        <item>20709</item>
-        <item>20711</item>
-        <item>20714</item>
-        <item>20715</item>
-        <item>20716</item>
-        <item>20717</item>
-        <item>20801</item>
-        <item>20802</item>
-        <item>20803</item>
-        <item>20804</item>
-        <item>20805</item>
-        <item>20806</item>
-        <item>20807</item>
-        <item>20808</item>
-        <item>20809</item>
-        <item>20810</item>
-        <item>20811</item>
-        <item>20812</item>
-        <item>20814</item>
-        <item>20815</item>
-        <item>20816</item>
-        <item>20817</item>
+    <string-array name="quantity">
+
+        <item>" "</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+
     </string-array>
 
     <string-array name="itemsRequested">
+        <item>" "</item>
         <item>Dental Kits</item>
         <item>Sewing Kits</item>
         <item>Shaving Kits</item>

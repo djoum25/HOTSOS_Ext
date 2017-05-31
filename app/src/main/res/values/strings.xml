@@ -6,6 +6,19 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="runner_log">Runner Log</string>
+    <string name="sorento">Sorento</string>
+    <string name="tresor">Tresor</string>
+    <string name="chateau">Chateau</string>
+    <string name="versailles">Versailles</string>
+    <string name="tttt">tresor</string>
+    <string name="rooms">rooms</string>
+    <string name="firebaseKeyTresor">tresor</string>
+    <string name="firebaseKeySorento">sorento</string>
+    <string name="firebaseKeyChateau">chateau</string>
+    <string name="firebaseKeyVersailles">versailles</string>
+    <string name="cancel">Cancel</string>
+    <string name="add">ADD</string>
+    <string name="listOfAvaillableItems">ListOfAvaillableItems</string>
 
     <string-array name="myItem">
 
