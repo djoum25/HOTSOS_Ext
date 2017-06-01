@@ -2,6 +2,7 @@ package com.teamtreehouselearningjulienlaurent.hotsos_ext.DialogFragments;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,7 +15,6 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -126,22 +126,22 @@ public class RoomDialog extends DialogFragment implements View.OnClickListener {
         chateau.setOnClickListener(this);
         RadioButton versailles = (RadioButton) view.findViewById(R.id.versaille);
         versailles.setOnClickListener(this);
-        //buildingRadioGroup.setOnCheckedChangeListener(this);
-        Button addRoom = (Button) view.findViewById(R.id.button_add_room_add);
-        Button cancelRoom = (Button) view.findViewById(R.id.button_add_room_cancel);
-        cancelRoom.setOnClickListener(this);
-        addRoom.setOnClickListener(this);
-
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
         builder.setView(view);
-        return builder.create();
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.button_add_room_add:
+        builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+            //above method has to stay empty
+        });
+        builder.setNegativeButton("Cancel", null);
+        AlertDialog dialog = builder.create();
+        dialog.setTitle("ADD ROOM");
+        dialog.show();
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 inputRoomValue = inputAutocomplete.getText().toString();
                 if (inputRoomValue.length() > 0 && whichBuilding != null) {
                     if (listener != null) {
@@ -155,12 +155,13 @@ public class RoomDialog extends DialogFragment implements View.OnClickListener {
                 } else {
                     Toast.makeText(getActivity(), "Enter room and building", Toast.LENGTH_SHORT).show();
                 }
-                break;
-            case R.id.button_add_room_cancel:
-                Toast.makeText(getActivity(), "You press cancel", Toast.LENGTH_SHORT).show();
-                getDialog().cancel();
-                break;
-        }
+            }
+        });
+        return dialog;
+    }
+
+    @Override
+    public void onClick(View view) {
         ArrayList<String> rooms = null;
         int id = buildingRadioGroup.getCheckedRadioButtonId();
         switch (id) {
@@ -183,7 +184,6 @@ public class RoomDialog extends DialogFragment implements View.OnClickListener {
             default:
                 Toast.makeText(getActivity(), "Click a building", Toast.LENGTH_SHORT).show();
         }
-
         if (rooms != null) {
             ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_list_item_1, rooms);

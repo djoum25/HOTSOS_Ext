@@ -15,53 +15,11 @@
         android:gravity="top"
         android:inputType="text|textAutoCorrect|textAutoComplete|textMultiLine"
         android:padding="10dp"
-        android:textColor="@android:color/black"
-        />
+        android:textColor="@android:color/black"/>
 
-
-    <LinearLayout
+    <ListView
+        android:id="@+id/my_list_of_item"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Spinner
-            android:id="@+id/itemsRequestedQuantitySpinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:entries="@array/quantity"
-            android:padding="12dp"/>
-
-        <Spinner
-            android:id="@+id/itemsRequestedSpinner"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:entries="@array/itemsRequested"
-            android:padding="12dp"/>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/cancelItemRequestButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:text="@string/cancel"/>
-
-        <Button
-            android:id="@+id/addItemRequestedButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:text="@string/add"/>
-    </LinearLayout>
-
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

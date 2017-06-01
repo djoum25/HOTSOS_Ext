@@ -2,6 +2,7 @@ package com.teamtreehouselearningjulienlaurent.hotsos_ext.DialogFragments;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,9 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.ListView;
 import android.widget.MultiAutoCompleteTextView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -26,30 +26,25 @@ import com.teamtreehouselearningjulienlaurent.hotsos_ext.OrderToComplete;
 import com.teamtreehouselearningjulienlaurent.hotsos_ext.R;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
-/**
- * Created by djoum on 5/28/17.
- */
 
-public class AddItemsDialogFragment extends DialogFragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+public class AddItemsDialogFragment extends DialogFragment implements AdapterView.OnItemClickListener {
     FirebaseDatabase mDatabase;
     DatabaseReference mDatabaseReference;
     MultiAutoCompleteTextView itemsRequested;
-    Button cancelItemRequested, addItemRequested;
     ArrayList<String> items;
     ArrayAdapter<String> itemsAdapter;
-    ArrayAdapter<String> spinnerAdapter;
-    StringBuilder mStringBuilder = new StringBuilder();
+    ArrayAdapter<String> listViewAdapter;
     private String roomNumber;
     private onAddItemsInteractionListener listener;
-    private Spinner itemsRequestedSpinner, itemRequestedQuanttiy;
+    private ListView multiselectList;
+    private ArrayList<String> listOfSelectedItems;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         items = new ArrayList<>();
-
+        listOfSelectedItems = new ArrayList<>();
         mDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mDatabase.getReference("Hotsos");
         Log.d("TEST: ", "ON CREATE IS CALLED");
@@ -60,13 +55,12 @@ public class AddItemsDialogFragment extends DialogFragment implements View.OnCli
                     items.add(snapshot.getValue().toString());
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-        itemsAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.select_dialog_item, items);
-        spinnerAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line, items);
+        itemsAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.select_dialog_item, items);
+        listViewAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line, items);
     }
 
     @NonNull
@@ -79,18 +73,30 @@ public class AddItemsDialogFragment extends DialogFragment implements View.OnCli
         itemsRequested = (MultiAutoCompleteTextView) view.findViewById(R.id.itemsRequested);
         itemsRequested.setAdapter(itemsAdapter);
         itemsRequested.setThreshold(1);
-        itemsRequestedSpinner = (Spinner) view.findViewById(R.id.itemsRequestedSpinner);
-        itemRequestedQuanttiy = (Spinner) view.findViewById(R.id.itemsRequestedQuantitySpinner);
-        itemRequestedQuanttiy.setOnItemSelectedListener(this);
-        itemsRequestedSpinner.setOnItemSelectedListener(this);
         itemsRequested.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
-        cancelItemRequested = (Button) view.findViewById(R.id.cancelItemRequestButton);
-        addItemRequested = (Button) view.findViewById(R.id.addItemRequestedButton);
-        cancelItemRequested.setOnClickListener(this);
-        addItemRequested.setOnClickListener(this);
-        // Inflate and set the layout for the dialog
-        // Pass null as the parent view because its going in the dialog layout
+        multiselectList = (ListView) view.findViewById(R.id.my_list_of_item);
+        multiselectList.setOnItemClickListener(this);
+        multiselectList.setAdapter(listViewAdapter);
+
         builder.setView(view).setTitle(getRoomNumber());
+
+        builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                for (String s : listOfSelectedItems) {
+                    Log.d("LIST OF SELECTED ITEM: ", s);
+                }
+                /*
+                review before next run
+                 */
+                if (listener != null) {
+                    //OrderToComplete orderToComplete = new OrderToComplete(roomNumber);
+                    //orderToComplete.convertItemsToList(itemsRequested.getText().toString());
+                    //listener.onAddItemsInteraction(orderToComplete);
+                }
+            }
+        });
+        builder.setNegativeButton("Cancel", null);
         return builder.create();
     }
 
@@ -102,44 +108,6 @@ public class AddItemsDialogFragment extends DialogFragment implements View.OnCli
         this.roomNumber = roomNumber;
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.addItemRequestedButton:
-                ArrayList<String> translate = new ArrayList<>
-                    (Arrays.asList(itemsRequested.getText().toString().split(",")));
-
-                for (String s : translate) {
-                    Log.d("this is translate", s);
-                }
-                /*
-                review before next run
-                 */
-                if (listener != null) {
-                    //OrderToComplete orderToComplete = new OrderToComplete(roomNumber);
-                    //orderToComplete.convertItemsToList(itemsRequested.getText().toString());
-                    //listener.onAddItemsInteraction(orderToComplete);
-                }
-                Toast.makeText(getActivity(), "Item requested button press", Toast.LENGTH_SHORT).show();
-                dismiss();
-                break;
-            case R.id.cancelItemRequestButton:
-                dismiss();
-                break;
-        }
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(getContext(), String.valueOf(parent.getItemAtPosition(position)), Toast.LENGTH_SHORT).show();
-        mStringBuilder.append(parent.getItemAtPosition(position)).append(" ");
-        itemsRequested.setText(mStringBuilder);
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
 
     @Override
     public void onAttach(Context context) {
@@ -153,6 +121,14 @@ public class AddItemsDialogFragment extends DialogFragment implements View.OnCli
     public void onDetach() {
         super.onDetach();
         listener = null;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String selected = (String) multiselectList.getItemAtPosition(position);
+        Toast.makeText(getContext(), selected, Toast.LENGTH_SHORT).show();
+        itemsRequested.append(selected + "\n");
+        listOfSelectedItems.add(selected);
     }
 
     public interface onAddItemsInteractionListener {

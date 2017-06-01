@@ -1,7 +1,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:orientation="vertical">
 
@@ -10,6 +10,7 @@
         style="@style/ToggleAppTheme"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_margin="10dp"
         android:layout_weight="1"
         android:padding="12dp">
         <RadioButton
@@ -42,40 +43,18 @@
             android:textAppearance="?android:attr/textAppearanceSmall"/>
     </RadioGroup>
 
-
     <AutoCompleteTextView
         android:id="@+id/room"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_margin="12dp"
-        android:width="120dp"
+        android:width="150dp"
         android:gravity="center"
-        android:hint="Room number"
+        android:hint="Room #"
         android:inputType="number"
         android:maxLength="5"
         android:maxLines="1"
         android:padding="20dp"
         android:visibility="invisible"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/button_add_room_cancel"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:text="Cancel"/>
-        <Button
-            android:id="@+id/button_add_room_add"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:text="ADD"/>
-    </LinearLayout>
-
 </LinearLayout>
